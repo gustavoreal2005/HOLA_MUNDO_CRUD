@@ -8,7 +8,7 @@ class Mensaje {
     }
     public static function find(int $id): ?array {
         $pdo = Database::getConnection();
-        $st = $pdo->prepare("SELECT * FROM mensajes WHERE id = ?");
+        $st = $pdo->prepare("SELECT * FROM mensajes WHERE id_mensaje = ?");
         $st->execute([$id]);
         $r = $st->fetch(); return $r ?: null;
     }
@@ -25,7 +25,7 @@ class Mensaje {
     }
     public static function deleteById(int $id): bool {
         $pdo = Database::getConnection();
-        $st = $pdo->prepare("DELETE FROM mensajes WHERE id=?");
+        $st = $pdo->prepare("DELETE FROM mensajes WHERE id_mensaje=?");
         return $st->execute([$id]);
     }
 }
